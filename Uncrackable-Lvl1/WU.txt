@@ -1,0 +1,19 @@
+1. Jadx-gui Uncrackable-Level1.apk
+2. Analisa utk bypass root.txt di sg.vantagepoint.Uncrackable1.MainActivity
+3. Remove validasi root detection sm debug detection di MainActivity.Smali
+4. Build ulang Patched apk -> apktool b -o Uncrackablelv1_patched.apk
+5. Buat private key -> keytool -genkey -v -keystore my.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias app
+6. Zipalign -> zipalign -v 4 app.apk app_aligned.apk
+7. Sign patched apk menggunakan private key -> jarsigner -sigalg SHA1withRSA -digestalg SHA1 -keystore my.keystore Uncrackablelv1_patched.apk app
+8. Install apk ke AVD -> adb install Uncrackablelv1_patched.apk
+9. Buka appnya dan bypassed root detection
+
+   Decrypt String
+10. Buka jadx dan analisa method input_checker tersebut
+12. setelah paham, copy java / buat script yg mimic algo tersebut dan return real stringnya
+12. Dapet string asli
+13. input string ke formnya dan pwned uncrackable level1
+
+Source:
+- Signing = https://stackoverflow.com/questions/10930331/how-to-sign-an-already-compiled-apk
+- smali cheat sheet = https://gist.github.com/AadilGillani/8c5690ebbaceda2914f9dc37197bd154
